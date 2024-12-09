@@ -1,0 +1,83 @@
+{
+  "employees": [
+    {
+      "id": "3",
+      "name": "Piyush Priyadarshi",
+      "position": "UI/UX Designer",
+      "department": "Design",
+      "email": "sam.wilson@example.com",
+      "phone": "456-789-0123",
+      "salary": 70000,
+      "hireDate": "2023-01-10",
+      "officeLocation": "Building C, Floor 2",
+      "skills": [
+        "Figma",
+        "Adobe XD",
+        "User Research",
+        "Wireframing"
+      ],
+      "projects": [
+        "Website Redesign",
+        "Mobile App Design"
+      ],
+      "bio": "Sam is a creative designer focused on enhancing user experiences."
+    },
+    {
+      "id": "4",
+      "name": "Alice Johnson",
+      "position": "DevOps Engineer",
+      "department": "IT",
+      "email": "alice.johnson@example.com",
+      "phone": "321-654-0987",
+      "salary": 85000,
+      "hireDate": "2020-11-05",
+      "officeLocation": "Building A, Floor 5",
+      "skills": [
+        "AWS",
+        "Docker",
+        "Kubernetes",
+        "CI/CD"
+      ],
+      "projects": [
+        "Infrastructure Automation",
+        "Cloud Migration"
+      ],
+      "bio": "Alice is a highly skilled DevOps engineer ensuring smooth deployments."
+    },
+    {
+      "id": "5",
+      "name": "Bob Brown",
+      "position": "Data Scientist",
+      "department": "Analytics",
+      "email": "bob.brown@example.com",
+      "phone": "567-890-1234",
+      "salary": 90000,
+      "hireDate": "2023-06-18",
+      "officeLocation": "Building D, Floor 4",
+      "skills": [
+        "Python",
+        "Machine Learning",
+        "Data Visualization"
+      ],
+      "projects": [
+        "Sales Forecasting",
+        "Customer Segmentation"
+      ],
+      "bio": "Bob is an expert data scientist leveraging insights to drive decisions."
+    },
+    {
+      "id": "8de8",
+      "name": "Piyush Priyadarshi",
+      "email": "piyushjha.ktr@gmail.com",
+      "position": "dds32",
+      "phone": "09572165854",
+      "salary": "230",
+      "bio": "",
+      "hireDate": "4444-04-15",
+      "officeLocation": "",
+      "department": "",
+      "skills": [],
+      "projects": []
+    }
+  ]
+}
