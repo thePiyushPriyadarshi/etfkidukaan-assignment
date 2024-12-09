@@ -5,13 +5,14 @@ import AddNewEmployeePage from "./pages/AddNewEmployeePage";
 import EditEmployeePage from "./pages/EditEmployeePage";
 import EmployeeDetailsPage from "./pages/EmployeeDetailsPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <div>
       <Navbar /> 
       <Routes>
-        <Route path="/" element={<EmployeeListPage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/employees" element={<EmployeeListPage />} />
         <Route path="/employees/add" element={<AddNewEmployeePage />} />
         <Route path="/employees/:id" element={<EmployeeDetailsPage />} />

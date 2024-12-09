@@ -158,7 +158,7 @@ export function AddEmployeeForm() {
                 <SelectRoot
                   name={field.name}
                   value={field.value}
-                  onValueChange={(value) => field.onChange(value)}
+                  onValueChange={({value}) => field.onChange(value)}
                   onInteractOutside={() => field.onBlur()}
                   collection={departments}
                 >
@@ -167,7 +167,7 @@ export function AddEmployeeForm() {
                   </SelectTrigger>
                   <SelectContent>
                     {departments.items.map((item) => (
-                      <SelectItem item={item.value} key={item.value}>
+                      <SelectItem item={item} key={item.value}>
                         {item.label}
                       </SelectItem>
                     ))}

@@ -34,9 +34,9 @@ export function DeleteEmployee({ id }: { id: string }) {
     >
       <DialogBackdrop />
       <DialogTrigger>
-        <button className="cursor-pointer">
+         <button className="cursor-pointer">
           <LuTrash2 className="text-rose-600" />
-        </button>
+         </button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

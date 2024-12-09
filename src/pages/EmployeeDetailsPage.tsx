@@ -5,20 +5,22 @@ import { formatDate } from "@/utils/format-data";
 import { Badge, Card, Separator } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
 import {
+  LuArrowLeft,
   LuBuilding,
   LuCalendar,
   LuIndianRupee,
   LuMail,
-  LuMapPin,
+  LuMapPin, 
   LuPencil,
-  LuPhone, 
+  LuPhone,
 } from "react-icons/lu";
 import { NavLink, useParams } from "react-router";
 import NotFoundPage from "./NotFoundPage";
+import { Button } from "@/components/ui/button";
 
 export default function EmployeeDetailsPage() {
-
-  const { id } = useParams();
+  
+  const { id } = useParams(); 
   const { data: employeeDetails, isLoading } = useQuery({
     queryFn: () => apiConnector("GET", `/employees/${id}`),
     queryKey: ["employeesDetails", id],
@@ -27,12 +29,12 @@ export default function EmployeeDetailsPage() {
   if (isLoading) {
     return <Loader />;
   }
-  if(!employeeDetails || !id){
-    return <NotFoundPage/>
+  if (!employeeDetails || !id) {
+    return <NotFoundPage />;
   }
   return (
     <div className="max-w-[1080px] w-11/12 mx-auto my-10">
-      <Card.Root variant={"subtle"} className="rounded-lg">
+      <Card.Root variant={"elevated"} className="rounded-lg">
         <Card.Header>
           <div className="flex flow-row justify-between">
             <div>
@@ -43,10 +45,13 @@ export default function EmployeeDetailsPage() {
               <Card.Description>{employeeDetails?.bio}</Card.Description>
             </div>
             <div className="flex items-start gap-6">
-              <NavLink className={"mt-0.5"} to={`/employees/${employeeDetails?.id}/edit`}>
+              <NavLink
+                className={"mt-0.5"}
+                to={`/employees/${employeeDetails?.id}/edit`}
+              >
                 <LuPencil />
               </NavLink>
-              <DeleteEmployee id={id}/>
+              <DeleteEmployee id={id} />
             </div>
           </div>
           <Separator />
@@ -87,22 +92,40 @@ export default function EmployeeDetailsPage() {
           <Separator className="my-3" />
           <div>
             <h6 className="text-lg flex uppercase font-bold">skills</h6>
-            <ul className="list-disc px-5 flex flex-wrap gap-14">
-              {employeeDetails?.skills.map((skill: string) => (
-                <li className="">{skill}</li>
-              ))}
-            </ul>
+            {employeeDetails?.skills.length > 0 ? (
+              <ul className="list-disc px-5 flex flex-wrap gap-14">
+                {employeeDetails?.skills.map((skill: string) => (
+                  <li className="">{skill}</li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-center text-lg">No Skill Present</p>
+            )}
           </div>
           <Separator className="my-3" />
           <div>
             <h6 className="text-lg uppercase font-bold">Project</h6>
-            <ul className="list-disc px-5 flex flex-col gap-1">
-              {employeeDetails?.projects?.map((project: string) => (
-                <li className="px-4">{project}</li>
-              ))}
-            </ul>
+            {employeeDetails?.projects?.length > 0 ? (
+              <ul className="list-disc px-5 flex flex-col gap-1">
+                {employeeDetails?.projects?.map((project: string) => (
+                  <li className="px-4">{project}</li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-center text-lg">No Project Present</p>
+            )}
           </div>
         </Card.Body>
+        <Card.Footer className="flex flex-col">
+          <Separator className="mb-3" />
+          <div className="flex justify-end w-full">
+            <NavLink to={"/employees"}>
+              <Button variant={"solid"} size="sm">
+                <LuArrowLeft /> Back
+              </Button>
+            </NavLink>
+          </div>
+        </Card.Footer>
       </Card.Root>
     </div>
   );

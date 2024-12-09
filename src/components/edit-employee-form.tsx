@@ -23,6 +23,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiConnector } from "@/utils/api-connector";
 import { EmployeeType } from "@/types/type";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { setStale } from "@/redux/slice/employee";
 type Employee = {
   id: string;
   name: string;
@@ -93,6 +95,7 @@ export function EditEmployeeForm({ data }: { data: EmployeeType }) {
   };
 
   const queryClient = useQueryClient();
+  const dispatch = useDispatch();
 
   const mutation = useMutation({
     mutationFn: (data: EmployeeType) =>
@@ -101,6 +104,7 @@ export function EditEmployeeForm({ data }: { data: EmployeeType }) {
       queryClient.invalidateQueries({
         queryKey: ["employeesDetails", data?.id],
       });
+      dispatch(setStale(true))
       navigate(`/employees/${data?.id}`);
     },
   });
@@ -171,7 +175,7 @@ export function EditEmployeeForm({ data }: { data: EmployeeType }) {
                 <SelectRoot
                   name={field.name}
                   value={field.value}
-                  onValueChange={(value) => field.onChange(value)}
+                  onValueChange={({value}) => field.onChange(value)}
                   onInteractOutside={() => field.onBlur()}
                   collection={departments}
                 >
@@ -180,7 +184,7 @@ export function EditEmployeeForm({ data }: { data: EmployeeType }) {
                   </SelectTrigger>
                   <SelectContent>
                     {departments.items.map((item) => (
-                      <SelectItem item={item.value} key={item.value}>
+                      <SelectItem item={item} key={item.value}>
                         {item.label}
                       </SelectItem>
                     ))}

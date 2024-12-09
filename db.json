@@ -2,13 +2,13 @@
   "employees": [
     {
       "id": "3",
-      "name": "Piyush Priyadarshi",
+      "name": "Sam w",
       "position": "UI/UX Designer",
       "department": "Design",
       "email": "sam.wilson@example.com",
       "phone": "456-789-0123",
-      "salary": 70000,
-      "hireDate": "2023-01-10",
+      "salary": "79999",
+      "hireDate": "2023-01-12",
       "officeLocation": "Building C, Floor 2",
       "skills": [
         "Figma",
@@ -66,18 +66,109 @@
       "bio": "Bob is an expert data scientist leveraging insights to drive decisions."
     },
     {
-      "id": "8de8",
-      "name": "Piyush Priyadarshi",
-      "email": "piyushjha.ktr@gmail.com",
-      "position": "dds32",
-      "phone": "09572165854",
-      "salary": "230",
-      "bio": "",
-      "hireDate": "4444-04-15",
-      "officeLocation": "",
-      "department": "",
-      "skills": [],
-      "projects": []
+      "id": "6",
+      "name": "John Smith",
+      "position": "Operations Manager",
+      "department": "Operations",
+      "email": "john.smith@example.com",
+      "phone": "123-456-7890",
+      "salary": "95000",
+      "hireDate": "2019-02-10",
+      "officeLocation": "Building B, Floor 3",
+      "skills": [
+        "Process Optimization",
+        "Team Management",
+        "Project Management"
+      ],
+      "projects": [
+        "Operational Efficiency",
+        "Supply Chain Optimization"
+      ],
+      "bio": "John is an experienced Operations Manager focused on optimizing business processes."
+    },
+    {
+      "id": "7",
+      "name": "Jessica Taylor",
+      "position": "Graphic Designer",
+      "department": "Design",
+      "email": "jessica.taylor@example.com",
+      "phone": "678-901-2345",
+      "salary": "72000",
+      "hireDate": "2022-05-22",
+      "officeLocation": "Building C, Floor 2",
+      "skills": [
+        "Adobe Illustrator",
+        "Branding",
+        "Typography"
+      ],
+      "projects": [
+        "Brand Identity Design",
+        "Marketing Campaign Designs"
+      ],
+      "bio": "Jessica is a passionate graphic designer who creates visually stunning designs."
+    },
+    {
+      "id": "8",
+      "name": "David Lee",
+      "position": "Security Analyst",
+      "department": "IT",
+      "email": "david.lee@example.com",
+      "phone": "234-567-8901",
+      "salary": "88000",
+      "hireDate": "2021-09-15",
+      "officeLocation": "Building A, Floor 5",
+      "skills": [
+        "Network Security",
+        "Threat Analysis",
+        "Firewall Configuration"
+      ],
+      "projects": [
+        "Security Audits",
+        "Vulnerability Management"
+      ],
+      "bio": "David is a dedicated security analyst working to protect corporate systems."
+    },
+    {
+      "id": "9",
+      "name": "Emma Harris",
+      "position": "Business Analyst",
+      "department": "Analytics",
+      "email": "emma.harris@example.com",
+      "phone": "345-678-9012",
+      "salary": "83000",
+      "hireDate": "2021-07-19",
+      "officeLocation": "Building D, Floor 4",
+      "skills": [
+        "Data Analysis",
+        "SQL",
+        "Requirements Gathering"
+      ],
+      "projects": [
+        "Market Trend Analysis",
+        "Financial Modeling"
+      ],
+      "bio": "Emma specializes in gathering and analyzing business requirements to optimize performance."
+    },
+    {
+      "id": "10",
+      "name": "Michael Davis",
+      "position": "Software Engineer",
+      "department": "IT",
+      "email": "michael.davis@example.com",
+      "phone": "456-789-0123",
+      "salary": "95000",
+      "hireDate": "2020-03-01",
+      "officeLocation": "Building A, Floor 5",
+      "skills": [
+        "JavaScript",
+        "Node.js",
+        "React"
+      ],
+      "projects": [
+        "Web Application Development",
+        "API Integration"
+      ],
+      "bio": "Michael is a skilled software engineer passionate about creating efficient web applications."
     }
   ]
 }
