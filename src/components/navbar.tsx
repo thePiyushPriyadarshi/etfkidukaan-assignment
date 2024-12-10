@@ -29,9 +29,9 @@ export const Navbar = () => {
       <div className="w-11/12 mx-auto flex justify-between items-center ">
         <div className="flex gap-3">
           <MobileNavbar />
-          <div className="w-6 h-6">
+          <NavLink to={"/"} className="w-6 h-6">
             <img src="https://etfkidukaan.in/logo_black.jpg" alt="logo" />
-          </div>
+          </NavLink>
         </div>
         {user?.accountType === "ADMIN" && (
           <div className="hidden md:flex gap-4 font-medium">

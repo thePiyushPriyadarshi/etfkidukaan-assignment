@@ -48,7 +48,7 @@ export function EmployeeCard({employee}:{
         </p>
         <p className="flex gap-2 items-center">
           <LuMapPin /> <span>Location : </span>
-          <span className="font-semibold">{employee?.officeLocation}</span>
+          <span className="font-semibold">{employee?.officeLocation || "NA"}</span>
         </p>
       </Card.Body>
       <Card.Footer className="flex justify-end">

@@ -15,15 +15,18 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { setStale } from "@/redux/slice/employee";
 export function DeleteEmployee({ id }: { id: string }) {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-
+  const dispatch = useDispatch();
   const deleteHandler = useMutation({
     mutationFn: () => apiConnector("DELETE", `/employees/${id}`),
     onSuccess: () => {
       toast.success("Employees deleted successfully");
+      dispatch(setStale(true));
       queryClient.invalidateQueries({ queryKey: ["employees"] });
       navigate("/employees");
     },

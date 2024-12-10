@@ -85,7 +85,7 @@ export default function EmployeeDetailsPage() {
             <p className="flex gap-2 items-center">
               <LuMapPin /> <span>Location : </span>
               <span className="font-semibold">
-                {employeeDetails?.officeLocation}
+                {employeeDetails?.officeLocation || "NA"}
               </span>
             </p>
           </div>
@@ -93,7 +93,7 @@ export default function EmployeeDetailsPage() {
           <div>
             <h6 className="text-lg flex uppercase font-bold">skills</h6>
             {employeeDetails?.skills.length > 0 ? (
-              <ul className="list-disc px-5 flex flex-wrap gap-14">
+              <ul className="list-disc px-5 flex flex-wrap gap-x-14 gap-y-2">
                 {employeeDetails?.skills.map((skill: string) => (
                   <li className="">{skill}</li>
                 ))}

@@ -24,6 +24,8 @@ import { apiConnector } from "@/utils/api-connector";
 import { EmployeeType } from "@/types/type";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { setStale } from "@/redux/slice/employee";
 type Employee = {
   id: string;
   name: string;
@@ -48,8 +50,7 @@ const departments = createListCollection({
 });
 
 export function AddEmployeeForm() {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const {
     register,
@@ -80,28 +81,29 @@ export function AddEmployeeForm() {
   };
 
   const queryClient = useQueryClient();
-
+  const dispatch = useDispatch();
   const mutation = useMutation({
-    mutationFn: (data: EmployeeType) => apiConnector("POST", "/employees", data),
+    mutationFn: (data: EmployeeType) =>
+      apiConnector("POST", "/employees", data),
     onSuccess: () => {
-      toast.success("Employees added successfully")
+      toast.success("Employees added successfully");
+      dispatch(setStale(true));
       queryClient.invalidateQueries({ queryKey: ["employees"] });
-      navigate('/employees'); 
+      navigate("/employees");
     },
-    onError:()=>{
+    onError: () => {
       toast.error("Error in adding employees, Please try again");
-    }
+    },
   });
   const onSubmit = handleSubmit((data: Employee) => {
-      const department = data?.department[0] ?? "";
-      const formData = {
-          ...data,
-          department,
-          skills,
-          projects,
-        };
-        console.log(formData)
-    // mutation.mutate(formData);
+    const department = data?.department[0] ?? "";
+    const formData = {
+      ...data,
+      department,
+      skills,
+      projects,
+    };
+    mutation.mutate(formData);
   });
 
   return (
@@ -154,16 +156,18 @@ export function AddEmployeeForm() {
 
           <Field
             label="Department"
+            invalid={!!errors.department}
             errorText={errors.department?.message}
           >
             <Controller
+                 rules={{ required: "Department is required" }}
               control={control}
               name="department"
               render={({ field }) => (
                 <SelectRoot
                   name={field.name}
                   value={field.value}
-                  onValueChange={({value}) => field.onChange(value)}
+                  onValueChange={({ value }) => field.onChange(value)}
                   onInteractOutside={() => field.onBlur()}
                   collection={departments}
                 >
@@ -279,7 +283,9 @@ export function AddEmployeeForm() {
             <Input {...register("officeLocation")} />
           </Field>
           <div className="flex justify-end">
-            <Button loading={mutation.isPending} type="submit">Submit</Button>
+            <Button loading={mutation.isPending} type="submit">
+              Submit
+            </Button>
           </div>
         </form>
       </Card.Body>

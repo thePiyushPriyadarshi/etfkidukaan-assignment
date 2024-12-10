@@ -2,7 +2,7 @@ import { EmployeeCard } from "@/components/employee-card";
 import Loader from "@/components/loader";
 import {
   SelectContent,
-  SelectItem, 
+  SelectItem,
   SelectRoot,
   SelectTrigger,
   SelectValueText,
@@ -32,7 +32,8 @@ export default function EmployeeListPage() {
   useEffect(() => {
     const searchData = data?.filter(
       (employee) =>
-        employee.name.toLowerCase().includes(searchValue.toLowerCase()) &&
+        (employee.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+          employee.email.toLowerCase().includes(searchValue.toLowerCase())) &&
         employee.department
           .toLowerCase()
           .includes(filterDepartment.toLowerCase())
@@ -71,7 +72,7 @@ export default function EmployeeListPage() {
           </SelectRoot>
         </div>
       </div>
-      <Separator className="my-3"/>
+      <Separator className="my-3" />
       <div className="space-y-4">
         {employeesData?.map((employee: EmployeeType) => (
           <EmployeeCard employee={employee} key={employee.id} />

@@ -1,6 +1,31 @@
 {
   "employees": [
     {
+      "id": "1",
+      "name": "Piyush Priyadarshi",
+      "position": "Frontend Engineer",
+      "department": "IT",
+      "email": "piyushjha.code@gmail.com",
+      "phone": "3452123654",
+      "salary": "500000",
+      "hireDate": "2024-12-15",
+      "officeLocation": "Remote",
+      "skills": [
+        "React",
+        "Spring boot",
+        "Nextjs",
+        "Tailwind CSS",
+        "HTML",
+        "Nodejs",
+        "Express",
+        "MongoDB"
+      ],
+      "projects": [
+        "ETF KI DUKAAN - Employee Management"
+      ],
+      "bio": "I am a Full stack developer"
+    },
+    {
       "id": "3",
       "name": "Sam w",
       "position": "UI/UX Designer",
