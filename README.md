@@ -28,20 +28,21 @@ npm install
 ---
 
 ## Running the Application
-### Note: You need to start two separate servers in two different terminals.
+#### Note: You need to start two separate servers in two different terminals.
 
 
-##### Start the JSON Server (Mock Backend)
-###### Open a first terminal and run:
+### Start the JSON Server (Mock Backend)
+##### Open a first terminal and run:
 ```bash
 npm run json-server
 ```
 
-##### Start the Frontend
-###### Open the second terminal and run:
+### Start the Frontend
+##### Open the second terminal and run:
 ```bash
 npm run dev
 ```
-The Vite development server will start at http://localhost:5173 (default port).
+
+The development server will start at http://localhost:3000 (default port).
 
 

@@ -8,7 +8,7 @@ export interface AuthState {
     accountType: "ADMIN" | "EMPLOYEE";
   } | null;
 }
-const storedUser = localStorage.getItem("user");
+const storedUser = localStorage.getItem("auth_user");
 const initialState: AuthState = {
   user: storedUser ? JSON.parse(storedUser) : null,
 };
@@ -19,7 +19,7 @@ export const authSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       state.user = action.payload;
-      localStorage.setItem("user", JSON.stringify(action.payload));
+      localStorage.setItem("auth_user", JSON.stringify(action.payload));
     },
     logout: (state) => {
       state.user = null; 
