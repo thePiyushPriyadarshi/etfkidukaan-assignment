@@ -23,6 +23,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiConnector } from "@/utils/api-connector";
 import { EmployeeType } from "@/types/type";
 import { useNavigate } from "react-router";
+import { toast } from "sonner";
 type Employee = {
   id: string;
   name: string;
@@ -83,9 +84,13 @@ export function AddEmployeeForm() {
   const mutation = useMutation({
     mutationFn: (data: EmployeeType) => apiConnector("POST", "/employees", data),
     onSuccess: () => {
+      toast.success("Employees added successfully")
       queryClient.invalidateQueries({ queryKey: ["employees"] });
       navigate('/employees'); 
     },
+    onError:()=>{
+      toast.error("Error in adding employees, Please try again");
+    }
   });
   const onSubmit = handleSubmit((data: Employee) => {
       const department = data?.department[0] ?? "";

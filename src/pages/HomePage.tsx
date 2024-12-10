@@ -32,11 +32,11 @@ const chartConfig = {
 export default function HomePage() {
   const { data: employeesData, loading } = useEmployees();
 
-  if (loading) {
+  if (loading || !employeesData) {
     return <Loader />;
   }
 
-  const departmentCounts = employeesData.reduce<Record<string, number>>(
+  const departmentCounts = employeesData?.reduce<Record<string, number>>(
     (acc, employee) => {
       const department = employee.department;
       acc[department] = (acc[department] || 0) + 1;
@@ -45,7 +45,7 @@ export default function HomePage() {
     {} as Record<string, number>
   );
 
-  const departmentCountArray = Object.entries(departmentCounts).map(
+  const departmentCountArray = Object?.entries(departmentCounts)?.map(
     ([departmentName, count]) => ({
       departmentName,
       count,

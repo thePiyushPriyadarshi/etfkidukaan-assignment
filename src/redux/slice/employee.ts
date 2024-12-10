@@ -1,6 +1,7 @@
 import { EmployeeType } from "@/types/type";
 import { apiConnector } from "@/utils/api-connector";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { toast } from "sonner";
 
 export interface EmployeeState {
   data: EmployeeType[];
@@ -21,6 +22,7 @@ export const fetchEmployees = createAsyncThunk(
       const response = await apiConnector("GET", "/employees");
       return response;
     } catch (error: unknown) {
+      toast.error("Error in fetching employees")
       console.log(error);
     }
   }

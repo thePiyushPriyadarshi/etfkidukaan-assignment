@@ -25,6 +25,7 @@ import { EmployeeType } from "@/types/type";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { setStale } from "@/redux/slice/employee";
+import { toast } from "sonner";
 type Employee = {
   id: string;
   name: string;
@@ -101,11 +102,15 @@ export function EditEmployeeForm({ data }: { data: EmployeeType }) {
     mutationFn: (data: EmployeeType) =>
       apiConnector("PUT", `/employees/${data?.id}`, data),
     onSuccess: () => {
+      toast.success("Employee details updated successfully");
       queryClient.invalidateQueries({
         queryKey: ["employeesDetails", data?.id],
       });
-      dispatch(setStale(true))
+      dispatch(setStale(true));
       navigate(`/employees/${data?.id}`);
+    },
+    onError: () => {
+      toast.error("Error in  updating employee details, Please try again");
     },
   });
   const onSubmit = handleSubmit((data: Employee) => {
@@ -175,7 +180,7 @@ export function EditEmployeeForm({ data }: { data: EmployeeType }) {
                 <SelectRoot
                   name={field.name}
                   value={field.value}
-                  onValueChange={({value}) => field.onChange(value)}
+                  onValueChange={({ value }) => field.onChange(value)}
                   onInteractOutside={() => field.onBlur()}
                   collection={departments}
                 >

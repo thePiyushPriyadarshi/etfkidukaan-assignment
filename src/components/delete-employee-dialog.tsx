@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {
   DialogBackdrop,
-  DialogBody, 
+  DialogBody,
   DialogContent,
   DialogFooter,
   DialogHeader,
@@ -14,6 +14,7 @@ import { apiConnector } from "@/utils/api-connector";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router";
+import { toast } from "sonner";
 export function DeleteEmployee({ id }: { id: string }) {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -22,8 +23,13 @@ export function DeleteEmployee({ id }: { id: string }) {
   const deleteHandler = useMutation({
     mutationFn: () => apiConnector("DELETE", `/employees/${id}`),
     onSuccess: () => {
+      toast.success("Employees deleted successfully");
       queryClient.invalidateQueries({ queryKey: ["employees"] });
       navigate("/employees");
+    },
+    onError: () => {
+      toast.error("Error in deleting employee, please try again");
+      setOpen(false);
     },
   });
   return (
@@ -34,9 +40,9 @@ export function DeleteEmployee({ id }: { id: string }) {
     >
       <DialogBackdrop />
       <DialogTrigger>
-         <button className="cursor-pointer">
+        <button className="cursor-pointer">
           <LuTrash2 className="text-rose-600" />
-         </button>
+        </button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
