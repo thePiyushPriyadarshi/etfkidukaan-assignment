@@ -21,10 +21,13 @@ git clone https://github.com/thePiyushPriyadarshi/etfkidukaan-assignment.git
 cd etfkidukaan-assignment
 ```
 
+## Open code in your code editor
+
+### Install the Packages
+
 ```bash
 npm install
 ```
-
 ---
 
 ## Running the Application
